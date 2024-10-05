@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.playeveryware.eos": {
-      "version": "file:C:/Users/jmanh/Downloads/com.playeveryware.eos-3.3.3.tgz",
+      "version": "file:C:/Users/Conversion/Downloads/com.playeveryware.eos-3.3.3.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
