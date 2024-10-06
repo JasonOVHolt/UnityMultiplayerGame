@@ -204,7 +204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 165678900}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 509897750}
+        m_TargetAssemblyTypeName: TitleScreenManager, Assembly-CSharp
+        m_MethodName: HostGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &165678900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1222,14 @@ MonoBehaviour:
   hostSettings: {fileID: 1612787599}
   joinSettings: {fileID: 656442341}
   settings: {fileID: 1780640348}
+  mapImage: {fileID: 1908342845}
+  mapImages:
+  - {fileID: 21300000, guid: 2eb76381314d66f4fa2a26957e6cb797, type: 3}
+  - {fileID: 21300000, guid: 8b84417195018234e9f55561db147b17, type: 3}
+  - {fileID: 21300000, guid: 39b56ecffc479fe4595c3b5e69f0cbe0, type: 3}
+  - {fileID: 21300000, guid: fc2f6ab6d9c34ff468d6c3030a8584a1, type: 3}
+  - {fileID: 21300000, guid: d5c4667105e8172478abb6540311ba39, type: 3}
+  currentMap: 0
 --- !u!1 &562590178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,7 +1669,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 872043212}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 509897750}
+        m_TargetAssemblyTypeName: TitleScreenManager, Assembly-CSharp
+        m_MethodName: RightMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &872043212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2529,7 +2561,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1429839433}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 509897750}
+        m_TargetAssemblyTypeName: TitleScreenManager, Assembly-CSharp
+        m_MethodName: LeftMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1429839433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3248,7 +3292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2eb76381314d66f4fa2a26957e6cb797, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
