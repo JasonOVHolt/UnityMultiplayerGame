@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "com.playeveryware.eos": "file:C:/Users/Conversion/Downloads/com.playeveryware.eos-3.3.3.tgz",
+    "com.dgreenheck.openfracture": "https://github.com/dgreenheck/OpenFracture.git",
+    "com.playeveryware.eos": "https://github.com/PlayEveryWare/eos_plugin_for_unity_upm.git",
     "com.unity.burst": "1.8.18",
     "com.unity.cinemachine": "2.10.1",
     "com.unity.collab-proxy": "2.5.2",
