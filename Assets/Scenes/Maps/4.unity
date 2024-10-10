@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 57190066}
   - component: {fileID: 57190065}
   - component: {fileID: 57190064}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,9 +341,10 @@ GameObject:
   - component: {fileID: 64471930}
   - component: {fileID: 64471929}
   - component: {fileID: 64471928}
+  - component: {fileID: 64471931}
   m_Layer: 0
-  m_Name: Door
-  m_TagString: Untagged
+  m_Name: RedDoor
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +361,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.75, z: -2.5}
   m_LocalScale: {x: 0.1, y: 1.5, z: 1.25}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 700110232}
   m_Father: {fileID: 1288294980}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &64471928
@@ -434,6 +436,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64471926}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &64471931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64471926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96af6710521ccfb4d9fe25d921bd5326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  minionSpawnPoint: {fileID: 700110232}
+  spawnCooldown: 5
+  minions:
+  - {fileID: 6355115067593967976, guid: 2fb9522380bd0ee41aed2593d81d7acb, type: 3}
+  currentMinion: 0
 --- !u!1 &98796428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,9 +1154,10 @@ GameObject:
   - component: {fileID: 470077746}
   - component: {fileID: 470077745}
   - component: {fileID: 470077747}
+  - component: {fileID: 470077748}
   m_Layer: 0
-  m_Name: Door
-  m_TagString: Untagged
+  m_Name: BlueDoor
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1153,7 +1174,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.75, z: -2.5}
   m_LocalScale: {x: 0.1, y: 1.5, z: 1.25}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 570022246}
   m_Father: {fileID: 2018139087}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &470077745
@@ -1226,7 +1248,25 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.0000076293945, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &470077748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470077742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96af6710521ccfb4d9fe25d921bd5326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  minionSpawnPoint: {fileID: 570022246}
+  spawnCooldown: 5
+  minions:
+  - {fileID: 6355115067593967976, guid: 2fb9522380bd0ee41aed2593d81d7acb, type: 3}
+  currentMinion: 0
 --- !u!1 &487074010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +1477,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537175135}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &570022245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 570022246}
+  m_Layer: 0
+  m_Name: BlueMinionSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &570022246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570022245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3, y: -0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 470077743}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &590440224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1868,6 +1939,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666834932}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &700110231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700110232}
+  m_Layer: 0
+  m_Name: RedMinionSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &700110232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700110231}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 3, y: -0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 64471927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &703839855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2937,7 +3039,7 @@ GameObject:
   - component: {fileID: 1063650935}
   - component: {fileID: 1063650934}
   - component: {fileID: 1063650933}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lava (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
