@@ -12,11 +12,14 @@ public class MinionController : MonoBehaviour
     [SerializeField] float attackCooldown;
     [SerializeField] public int health,damage;
     [SerializeField] float step;
+    [SerializeField] ParticleSystem hitParticle;
+    float previousHealth;
 
      GameObject doorTarget, currentTarget;
 
     void Start()
     {
+        previousHealth = health;
         canAttack = true;
         canMove = true;
         if (this.gameObject.transform.position.z > 0)
@@ -52,16 +55,24 @@ public class MinionController : MonoBehaviour
             Destroy(this.gameObject);
         if (canMove)
             transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, step/100);
+
+        if (previousHealth != health)
+        {
+            hitParticle.Play();
+            previousHealth = health;
+        }
+
     }
 
     private void OnTriggerStay(Collider collider)
     {
-        Debug.Log("Trigger Stay");
         if ((collider.gameObject.CompareTag(target) || collider.gameObject.CompareTag("Door")) && canAttack)
         {
+            canAttack = false;
             Debug.Log("ATTACK");
             Attack(collider.gameObject);
             canMove = false;
+            timer = attackCooldown;
         }
     }
 
@@ -83,6 +94,5 @@ public class MinionController : MonoBehaviour
         else
             enemy.GetComponent<DoorController>().health -= damage;
 
-        canAttack = false;
     }
 }
