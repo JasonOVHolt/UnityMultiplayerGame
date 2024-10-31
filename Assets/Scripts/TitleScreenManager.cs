@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class TitleScreenManager : MonoBehaviour
 {
-    [SerializeField] bool showingHost = false, showingJoin = false, showingSettings = false, showingCustomize = false;
+    bool showingHost = false, showingJoin = false, showingSettings = false, showingCustomize = false;
     [SerializeField] GameObject hostSettings, joinSettings, settings, customizeSettings;
     [SerializeField] Image mapImage, hatImage, maskImage, colorImage;
     [SerializeField] List<Sprite> mapImages, hatImages, maskImages, colorImages;
     [SerializeField] List<Color> colors;
-    [SerializeField] int currentMap;
+    int currentMap;
     [SerializeField] GameObject player, hatObject, maskObject;
     [SerializeField] List<GameObject> hats, masks;
     [SerializeField] Material playerMaterial;
 
     int currentHat, currentMask, currentColor;
     [SerializeField] float rotSpeed;
+
 
 
     // Start is called before the first frame update
@@ -32,12 +33,13 @@ public class TitleScreenManager : MonoBehaviour
         customizeSettings.SetActive(false);
         player.SetActive(false);
 
-
-        //hatImage.sprite = hatImages[currentHat];
-        //maskImage.sprite = maskImages[currentMask];
+        hatImage.sprite = hatImages[currentHat];
+        maskImage.sprite = maskImages[currentMask];
         colorImage.sprite = colorImages[currentColor];
-        
 
+        currentHat = PlayerPrefs.GetInt("currentHat");
+        currentMask = PlayerPrefs.GetInt("currentMask");
+        currentColor = PlayerPrefs.GetInt("currentColor");
 
     }
 
@@ -100,6 +102,8 @@ public class TitleScreenManager : MonoBehaviour
             showingCustomize = true;
             customizeSettings.SetActive(true);
             player.SetActive(true);
+            hats[currentHat].SetActive(true);
+            masks[currentMask].SetActive(true);
         }
         else
         {
@@ -139,6 +143,7 @@ public class TitleScreenManager : MonoBehaviour
     {
         string sceneName = (currentMap + 1).ToString();
         SceneManager.LoadScene(sceneName);
+
     }
 
     void CheckStats()
@@ -196,35 +201,43 @@ public class TitleScreenManager : MonoBehaviour
 
     public void LeftHat()
     {
+        hats[currentHat].SetActive(false);
         currentHat -= 1;
         if (currentHat < 0)
             currentHat = hatImages.Count - 1;
         hatImage.sprite = hatImages[currentHat];
+        hats[currentHat].SetActive(true);
     }
 
     public void RightHat()
     {
+        hats[currentHat].SetActive(false);
         currentHat += 1;
         if (currentHat >= hatImages.Count)
             currentHat = 0;
         hatImage.sprite = hatImages[currentHat];
+        hats[currentHat].SetActive(true);
     }
 
 
     public void LeftMask()
     {
+        masks[currentMask].SetActive(false);
         currentMask -= 1;
         if (currentMask < 0)
             currentMask = maskImages.Count - 1;
         maskImage.sprite = maskImages[currentMask];
+        masks[currentMask].SetActive(true);
     }
 
     public void RightMask()
     {
+        masks[currentMask].SetActive(false);
         currentMask += 1;
         if (currentMask >= maskImages.Count)
             currentMask = 0;
         maskImage.sprite = maskImages[currentMask];
+        masks[currentMask].SetActive(true);
     }
 
 
@@ -247,6 +260,5 @@ public class TitleScreenManager : MonoBehaviour
     }
 
 
-
-
+   
 }
