@@ -14,6 +14,9 @@ public class characterController : MonoBehaviour
     Vector3 moveDirection;
     Rigidbody rb;
 
+    //Camera Reference
+    public GameObject beanCam;
+
     //ground check system
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -36,6 +39,12 @@ public class characterController : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
+    //WallRunning
+    public float wallSpeed;
+    private bool isTouchWall;
+    private RaycastHit wallHit;
+
+
     //Keybinds
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
@@ -57,6 +66,7 @@ public class characterController : MonoBehaviour
         rb.freezeRotation = true;
         readyToJump = true;
         startYScale = transform.localScale.y;
+        isTouchWall = false;
     }
 
     // Update is called once per frame
@@ -99,8 +109,19 @@ public class characterController : MonoBehaviour
         //I am not speed
         SpeedControl();
 
-        //Jumping
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+      
+        //Wall or collison detection for wall running hopefully
+        if (Physics.Raycast(beanCam.transform.position, beanCam.transform.eulerAngles, out wallHit, playerHeight * 0.5f))
+        {
+          
+            isTouchWall = true;
+            moveSpeed = wallSpeed;
+            Debug.Log(wallSpeed);
+            
+        }
+
+            //Jumping
+            if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
 

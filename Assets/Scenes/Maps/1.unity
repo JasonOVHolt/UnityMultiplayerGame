@@ -2769,6 +2769,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ServerUserIdToConnectToInput: 
   ServerUserIDForCopying: 
+--- !u!1 &1175080327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175080328}
+  - component: {fileID: 1175080329}
+  m_Layer: 8
+  m_Name: checkWaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1175080328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175080327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2141952869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1175080329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175080327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09cd3d92d3e16084985017b4a31338ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationHelp: {fileID: 1024232533}
 --- !u!1001 &1185388171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4353,6 +4398,7 @@ Transform:
   m_Children:
   - {fileID: 1024232534}
   - {fileID: 2100643786}
+  - {fileID: 1175080328}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2141952870
@@ -4370,6 +4416,7 @@ MonoBehaviour:
   walkSpeed: 5
   sprintSpeed: 10
   orientation: {fileID: 1024232534}
+  beanCam: {fileID: 1175080327}
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -4383,6 +4430,7 @@ MonoBehaviour:
   crouchSpeed: 0.1
   crouchYScale: 0
   maxSlopeAngle: 40
+  wallSpeed: 0
   jumpKey: 32
   sprintKey: 304
   crouchKey: 306
