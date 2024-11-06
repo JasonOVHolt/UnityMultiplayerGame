@@ -8,7 +8,7 @@ public class playerCamera : MonoBehaviour
     public float sensX;
     public float sensY;
 
-    public Transform orientation;
+    public GameObject characterBean;
 
     float xRotation;
     float yRotation;
@@ -31,7 +31,8 @@ public class playerCamera : MonoBehaviour
         // camera lock and orientation
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        characterBean.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        
 
     }
 }

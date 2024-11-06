@@ -8,14 +8,10 @@ public class characterController : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-    public Transform orientation;
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
     Rigidbody rb;
-
-    //Camera Reference
-    public GameObject beanCam;
 
     //ground check system
     public float playerHeight;
@@ -40,6 +36,7 @@ public class characterController : MonoBehaviour
     private bool exitingSlope;
 
     //WallRunning
+    public GameObject beanCam;
     public float wallSpeed;
     private bool isTouchWall;
     private RaycastHit wallHit;
@@ -75,7 +72,7 @@ public class characterController : MonoBehaviour
         //Character Movement
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
 
         // on slope
         if (OnSlope() && !exitingSlope)
@@ -111,7 +108,7 @@ public class characterController : MonoBehaviour
 
       
         //Wall or collison detection for wall running hopefully
-        if (Physics.Raycast(beanCam.transform.position, beanCam.transform.eulerAngles, out wallHit, playerHeight * 0.5f))
+        if (Physics.Raycast(transform.position, transform.forward, out wallHit, playerHeight * 0.3f))
         {
           
             isTouchWall = true;
