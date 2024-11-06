@@ -38,7 +38,7 @@ public class characterController : MonoBehaviour
     //WallRunning
     public GameObject beanCam;
     public float wallSpeed;
-    private bool isTouchWall;
+    public bool isTouchWall;
     private RaycastHit wallHit;
 
 
@@ -113,8 +113,23 @@ public class characterController : MonoBehaviour
           
             isTouchWall = true;
             moveSpeed = wallSpeed;
-            Debug.Log(wallSpeed);
             
+            
+        }
+        else
+        {
+            isTouchWall = false;
+        }
+
+        if (isTouchWall = true && !grounded)
+        {
+            //make character stick to wall or soemthing like that IDK useGravity no work
+            isTouchWall = false;
+        }
+        else
+        {
+            
+            isTouchWall = false;
         }
 
             //Jumping

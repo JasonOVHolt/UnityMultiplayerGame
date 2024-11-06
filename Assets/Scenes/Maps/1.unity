@@ -4273,8 +4273,9 @@ MonoBehaviour:
   crouchSpeed: 0.1
   crouchYScale: 0
   maxSlopeAngle: 40
-  beanCam: {fileID: 0}
+  beanCam: {fileID: 1013824513}
   wallSpeed: 20
+  isTouchWall: 0
   jumpKey: 32
   sprintKey: 304
   crouchKey: 306
