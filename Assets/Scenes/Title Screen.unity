@@ -1837,6 +1837,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365434977}
   m_CullTransparentMesh: 1
+--- !u!1 &371013007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371013010}
+  - component: {fileID: 371013009}
+  - component: {fileID: 371013008}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &371013008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371013007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588133011dd1abc4c97bb99936c54a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &371013009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371013007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0055b9342ea306449a416940c77b0a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamesPlayed: 0
+  gamesWon: 0
+  gamesLossed: 0
+  playerName: 
+  currentHat: 0
+  currentMask: 0
+  currentColor: 0
+--- !u!4 &371013010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371013007}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,6 +2301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 509897749}
   - component: {fileID: 509897750}
+  - component: {fileID: 509897751}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -2331,6 +2396,42 @@ MonoBehaviour:
   - {fileID: 837429459}
   playerMaterial: {fileID: 2100000, guid: 514e777b6ba972a41966ce9a933c8fe4, type: 2}
   rotSpeed: 50
+--- !u!114 &509897751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509897748}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54754184689ed948b6113351d625d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DemoTitle: {fileID: 0}
+  SceneSwitcherDropDown: {fileID: 0}
+  loginTypeDropdown: {fileID: 0}
+  idContainer: {fileID: 0}
+  idText: {fileID: 0}
+  idInputField: {fileID: 0}
+  tokenText: {fileID: 0}
+  tokenInputField: {fileID: 0}
+  tokenTooltip: {fileID: 0}
+  connectTypeContainer: {fileID: 0}
+  connectTypeDropdown: {fileID: 0}
+  loginButtonText: {fileID: 0}
+  loginButton: {fileID: 0}
+  logoutButton: {fileID: 0}
+  removePersistentTokenButton: {fileID: 0}
+  OnLogin:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLogout:
+    m_PersistentCalls:
+      m_Calls: []
+  SceneInformation: {fileID: 11400000, guid: 7f27989ec7bd19d4f9f81899a6d00faf, type: 2}
+  UIFirstSelected: {fileID: 0}
+  UIFindSelectable: {fileID: 0}
 --- !u!1 &562590178
 GameObject:
   m_ObjectHideFlags: 0
@@ -5540,3 +5641,4 @@ SceneRoots:
   - {fileID: 4072197529024943823}
   - {fileID: 50174252}
   - {fileID: 974184660}
+  - {fileID: 371013010}

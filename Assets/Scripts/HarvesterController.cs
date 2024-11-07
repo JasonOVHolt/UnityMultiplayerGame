@@ -11,10 +11,53 @@ public class HarvesterController : MonoBehaviour
     [SerializeField] float reachDistance;
     float timer;
     [SerializeField] float actionCooldown, step;
+    private BaseManager baseManager;
+    string side;
+    GameObject myBase;
+
+    private void Awake()
+    {
+        if(transform.position.x < 0)
+        {
+            isWood = true;
+        }
+        else
+        {
+            isWood = false;
+        }
+
+        if(transform.position.z < 0)
+        {
+            side = "Red";
+            
+        }
+        else
+        {
+            side = "Blue";
+        }
+
+        if (isWood)
+        {
+            harvestTarget = GameObject.Find(side + "TreePoint").transform;
+            baseTarget = GameObject.Find(side + "WoodPoint").transform;
+        }
+        else
+        {
+            harvestTarget = GameObject.Find(side + "RockPoint").transform;
+            baseTarget = GameObject.Find(side + "StonePoint").transform;
+        }
+            
+
+        baseManager = GameObject.Find(side + "Base").GetComponent<BaseManager>();
+
+    }
+
+
 
     private void Start()
     {
         timer = actionCooldown;
+        currentTarget = harvestTarget;
     }
     // Update is called once per frame
     void Update()
@@ -28,7 +71,15 @@ public class HarvesterController : MonoBehaviour
             else
             {
                 currentTarget = harvestTarget;
-                /////////////////////////////////Add resource to base
+                if (isWood) 
+                {
+                    baseManager.wood++;
+                }
+                else
+                {
+                    baseManager.stone++;
+                }
+
             }
                 
         }
@@ -49,6 +100,8 @@ public class HarvesterController : MonoBehaviour
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, step / 100);
+
+        transform.LookAt(currentTarget.transform);
     }
 
 

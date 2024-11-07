@@ -340,4 +340,6 @@ public class TitleScreenManager : MonoBehaviour
         EOSSessionsManager.SetJoinInfo(null);
         NetworkSamplePlayer.UnregisterDisconnectCallback(OnDisconnect);
     }
+
+
 }
