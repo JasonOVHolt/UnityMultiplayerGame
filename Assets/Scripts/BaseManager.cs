@@ -17,7 +17,7 @@ public class BaseManager : MonoBehaviour
     public float attackerSR, attackerAS, attackerH;
     public float harvestorHS, harvestorMS;
 
-
+    public characterController playerController;
 
     // Start is called before the first frame update
     void Awake()

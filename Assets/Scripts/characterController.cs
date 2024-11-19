@@ -57,6 +57,15 @@ public class characterController : MonoBehaviour
         air
     }
 
+
+
+    //Player Stats
+    public float health = 100;
+    public float armor = 0;
+
+
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();

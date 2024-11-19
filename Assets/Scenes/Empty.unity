@@ -321,6 +321,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueHomeT1
       objectReference: {fileID: 0}
+    - target: {fileID: 1729842487521320558, guid: 338ceba7f9911d045856d9f6a0530b6d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1807781995604247740, guid: 338ceba7f9911d045856d9f6a0530b6d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -388,6 +393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RedHomeT1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265436333620126297, guid: e03c97e9709277445b01c5327d58747e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2476264256143748218, guid: e03c97e9709277445b01c5327d58747e,
         type: 3}
@@ -610,6 +620,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedHomeT3
       objectReference: {fileID: 0}
+    - target: {fileID: 6411117407659663870, guid: 24836db1c41e3e54d8c9022c71cf7708,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -623,6 +638,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2138126624122282522, guid: 1d9807d51bd18dc47a66993fe76f4f33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205227858224429888, guid: 1d9807d51bd18dc47a66993fe76f4f33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5587660314391943864, guid: 1d9807d51bd18dc47a66993fe76f4f33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -678,13 +703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedBase
       objectReference: {fileID: 0}
-    - target: {fileID: 8397392619353797490, guid: 1d9807d51bd18dc47a66993fe76f4f33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4796774116121079765, guid: 1d9807d51bd18dc47a66993fe76f4f33, type: 3}
+    - {fileID: 1318538708701362048, guid: 1d9807d51bd18dc47a66993fe76f4f33, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d9807d51bd18dc47a66993fe76f4f33, type: 3}
@@ -700,6 +722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueHomeT2
+      objectReference: {fileID: 0}
+    - target: {fileID: 576381333687711800, guid: 6da48f8a85855a04a827316d896a920e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8969086806411889081, guid: 6da48f8a85855a04a827316d896a920e,
         type: 3}
@@ -770,6 +797,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBase
       objectReference: {fileID: 0}
+    - target: {fileID: 5114472859392570635, guid: a41a0ebb6a7b9b5428e4768b402036c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5246300110724418016, guid: a41a0ebb6a7b9b5428e4768b402036c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -837,6 +869,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RedHomeT2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316580169431087666, guid: dc5a2baf38c70d54c9b3211ff534c113,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3520388138504619790, guid: dc5a2baf38c70d54c9b3211ff534c113,
         type: 3}
@@ -1053,6 +1090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueHomeT3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956206754321256584, guid: 17a3b309dd009a5499478a26833a91f5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7835453105279644647, guid: 17a3b309dd009a5499478a26833a91f5,
         type: 3}
