@@ -8,6 +8,7 @@ public class characterController : MonoBehaviour
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
+    public float wallRunSpeed;
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
@@ -36,16 +37,32 @@ public class characterController : MonoBehaviour
     private bool exitingSlope;
 
     //WallRunning
-    public GameObject beanCam;
-    public float wallSpeed;
-    public bool isTouchWall;
-    private RaycastHit wallHit;
+    public LayerMask whatIsWall;
+    public float wallRunForce;
+    public float maxWallRunTime;
+    private float wallRunTimer;
+    public float wallClimbSpeed;
+
+
+    public float wallCheckDistance;
+    public float minJumpHeight;
+    private RaycastHit leftWallHit;
+    private RaycastHit rightWallHit;
+    private bool wallLeft;
+    private bool wallRight;
+    public bool wallrunning;
+
 
 
     //Keybinds
     public KeyCode jumpKey = KeyCode.Space;
     public KeyCode sprintKey = KeyCode.LeftShift;
     public KeyCode crouchKey = KeyCode.LeftControl;
+    public KeyCode upwardsRunKey = KeyCode.LeftShift;
+    public KeyCode downwardsRunKey = KeyCode.LeftControl;
+
+    private bool upwardsRunning;
+    private bool downwardsRunning;
 
     //Movement States
     public movementState state;
@@ -54,6 +71,7 @@ public class characterController : MonoBehaviour
         walking,
         sprinting,
         crouching,
+        wallrunning,
         air
     }
 
@@ -72,7 +90,6 @@ public class characterController : MonoBehaviour
         rb.freezeRotation = true;
         readyToJump = true;
         startYScale = transform.localScale.y;
-        isTouchWall = false;
     }
 
     // Update is called once per frame
@@ -115,34 +132,9 @@ public class characterController : MonoBehaviour
         //I am not speed
         SpeedControl();
 
-      
-        //Wall or collison detection for wall running hopefully
-        if (Physics.Raycast(transform.position, transform.forward, out wallHit, playerHeight * 0.3f))
-        {
-          
-            isTouchWall = true;
-            moveSpeed = wallSpeed;
-            
-            
-        }
-        else
-        {
-            isTouchWall = false;
-        }
 
-        if (isTouchWall = true && !grounded)
-        {
-            //make character stick to wall or soemthing like that IDK useGravity no work
-            isTouchWall = false;
-        }
-        else
-        {
-            
-            isTouchWall = false;
-        }
-
-            //Jumping
-            if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        //Jumping
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -151,26 +143,30 @@ public class characterController : MonoBehaviour
             Invoke(nameof(resetJump), jumpCooldown);
         }
         //Start crouching
-        if(Input.GetKeyDown(crouchKey))
+        if (Input.GetKeyDown(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
         //Stop crouching
-        if(Input.GetKeyUp(crouchKey))
+        if (Input.GetKeyUp(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
 
-        
+
         //State of Character
         stateHandler();
+
+        //Wallrunning
+        CheckForWall();
+        StateMachine();
     }
 
     private void SpeedControl()
     {
         //limit slope speed
-        if(OnSlope() && !exitingSlope)
+        if (OnSlope() && !exitingSlope)
         {
             if (rb.velocity.magnitude > moveSpeed)
                 rb.velocity = rb.velocity.normalized * moveSpeed;
@@ -187,7 +183,7 @@ public class characterController : MonoBehaviour
             }
         }
 
-        
+
     }
 
     private void Jump()
@@ -208,6 +204,15 @@ public class characterController : MonoBehaviour
 
     private void stateHandler()
     {
+        //Wall running
+        if (wallrunning)
+        {
+            state = movementState.wallrunning;
+            moveSpeed = wallRunSpeed;
+        }
+
+
+
         if (Input.GetKey(crouchKey))
         {
             state = movementState.crouching;
@@ -215,12 +220,12 @@ public class characterController : MonoBehaviour
         }
 
         //Sprinting
-        if(grounded && Input.GetKey(sprintKey))
+        if (grounded && Input.GetKey(sprintKey))
         {
             state = movementState.sprinting;
             moveSpeed = sprintSpeed;
         }
-        else if(grounded)
+        else if (grounded)
         {
             state = movementState.walking;
             moveSpeed = walkSpeed;
@@ -229,12 +234,12 @@ public class characterController : MonoBehaviour
         {
             state = movementState.air;
         }
-        
+
     }
 
     private bool OnSlope()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;
@@ -247,4 +252,91 @@ public class characterController : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
 
     }
+
+    private void CheckForWall()
+    {
+        wallRight = Physics.Raycast(transform.position, transform.right, out rightWallHit, wallCheckDistance, whatIsWall);
+        wallLeft = Physics.Raycast(transform.position, -transform.right, out leftWallHit, wallCheckDistance, whatIsWall);
+    }
+
+    private bool AboveGround()
+    {
+        return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight, whatIsGround);
+    }
+
+    private void StateMachine()
+    {
+        upwardsRunning = Input.GetKey(upwardsRunKey);
+        downwardsRunning = Input.GetKey(downwardsRunKey);
+
+        if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround())
+        {
+            if (!wallrunning)
+            {
+                StartWallRun();
+            }
+        else
+        {
+                if (wallrunning)
+                    StopWallRun();
+        }
+
+        }
+    }
+
+    private void StartWallRun()
+    {
+        wallrunning = true;
+    }
+
+    private void WallRunningMovement()
+    {
+        rb.useGravity = false;
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
+
+        Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
+
+        if ((transform.forward - wallForward).magnitude > (transform.forward - -wallForward).magnitude)
+            wallForward = -wallForward;
+
+       
+
+        //add forward force
+        rb.AddForce(wallForward * wallRunForce, ForceMode.Force);
+
+        //push towards wall
+        if(!(wallLeft && horizontalInput > 0) && !(wallRight && horizontalInput < 0))
+            rb.AddForce(-wallNormal * 100, ForceMode.Force);
+
+        //up and down force
+        if (upwardsRunning)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, wallClimbSpeed, rb.velocity.z);
+        }
+        if (downwardsRunning)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, -wallClimbSpeed, rb.velocity.z);
+        }
+    }
+
+    private void StopWallRun()
+    {
+        wallrunning = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (wallrunning)
+            WallRunningMovement();
+    }
+
+
+
+
+
+
+
+
 }

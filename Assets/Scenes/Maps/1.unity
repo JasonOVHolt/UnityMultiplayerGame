@@ -4260,6 +4260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 1
   sprintSpeed: 2
+  wallRunSpeed: 8
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -4273,13 +4274,23 @@ MonoBehaviour:
   crouchSpeed: 0.1
   crouchYScale: 0
   maxSlopeAngle: 40
-  beanCam: {fileID: 1013824513}
-  wallSpeed: 20
-  isTouchWall: 0
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  wallRunForce: 5
+  maxWallRunTime: 10
+  wallClimbSpeed: 2
+  wallCheckDistance: 1
+  minJumpHeight: 0
+  wallrunning: 0
   jumpKey: 32
   sprintKey: 304
   crouchKey: 306
+  upwardsRunKey: 304
+  downwardsRunKey: 306
   state: 0
+  health: 100
+  armor: 0
 --- !u!54 &2141952871
 Rigidbody:
   m_ObjectHideFlags: 0
