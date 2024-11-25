@@ -103,7 +103,8 @@ using UnityEngine.InputSystem;
             idInputField.InputField.onEndEdit.AddListener(CacheIdInputField);
             tokenInputField.InputField.onEndEdit.AddListener(CacheTokenField);
 #if UNITY_EDITOR
-            loginType = LoginCredentialType.AccountPortal; // Default in editor
+            //loginType = LoginCredentialType.AccountPortal; // Default in editor
+            loginType = LoginCredentialType.PersistentAuth;
 #elif UNITY_SWITCH
             loginType = LoginCredentialType.PersistentAuth; // Default on switch
 #elif UNITY_PS4 || UNITY_PS5 || UNITY_GAMECORE
@@ -112,7 +113,7 @@ using UnityEngine.InputSystem;
             loginType = LoginCredentialType.AccountPortal; // Default on other platforms
 #endif
 
-        // TODO: This will fail on anything that is mac, windows, or linux, or is an editor version of any of the above
+            // TODO: This will fail on anything that is mac, windows, or linux, or is an editor version of any of the above
 #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX
             idInputField.InputField.text = "localhost:7777"; //default on pc
 #endif
@@ -1010,13 +1011,16 @@ using UnityEngine.InputSystem;
             //LoggingInterface.SetCallback((LogMessage logMessage) =>{
             //    print(logMessage.Message);
             //});
+            Debug.Log("1");
 
             if (loginType == connect)
             {
                 AcquireTokenForConnectLogin(connectType);
+                Debug.Log("2");
             }
             else if (loginType == LoginCredentialType.ExternalAuth)
             {
+                Debug.Log("3");
 #if (UNITY_PS4 || UNITY_PS5) && !UNITY_EDITOR
 #if UNITY_PS4
                     var psnManager = EOSManager.Instance.GetOrCreateManager<EOSPSNManagerPS4>();
@@ -1038,6 +1042,7 @@ using UnityEngine.InputSystem;
             }
             else if (loginType == LoginCredentialType.PersistentAuth)
             {
+                Debug.Log("4");
 #if UNITY_SWITCH && !UNITY_EDITOR
                 var nintendoManager = EOSManager.Instance.GetOrCreateManager<EOSNintendoManager>();
                 nintendoManager.StartLoginWithPersistantAuthPreselectedUser((LoginCallbackInfo callbackInfo) =>
@@ -1072,6 +1077,7 @@ using UnityEngine.InputSystem;
             }
             else if (loginType == LoginCredentialType.ExchangeCode) 
             {
+                Debug.Log("5");
                 EOSManager.Instance.StartLoginWithLoginTypeAndToken(loginType,
                                                                        null,
                                                                        EOSManager.Instance.GetCommandLineArgsFromEpicLauncher().authPassword,
@@ -1079,6 +1085,7 @@ using UnityEngine.InputSystem;
             }
             else
             {
+                Debug.Log("6");
                 // Deal with other EOS log in issues
                 EOSManager.Instance.StartLoginWithLoginTypeAndToken(loginType,
                                                                         usernameAsString,

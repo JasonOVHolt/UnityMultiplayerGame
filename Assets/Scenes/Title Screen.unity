@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &40458620
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2301,9 +2301,8 @@ GameObject:
   m_Component:
   - component: {fileID: 509897749}
   - component: {fileID: 509897750}
-  - component: {fileID: 509897751}
   m_Layer: 0
-  m_Name: Scripts
+  m_Name: TitleScripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2396,42 +2395,6 @@ MonoBehaviour:
   - {fileID: 837429459}
   playerMaterial: {fileID: 2100000, guid: 514e777b6ba972a41966ce9a933c8fe4, type: 2}
   rotSpeed: 50
---- !u!114 &509897751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509897748}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e54754184689ed948b6113351d625d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DemoTitle: {fileID: 0}
-  SceneSwitcherDropDown: {fileID: 0}
-  loginTypeDropdown: {fileID: 0}
-  idContainer: {fileID: 0}
-  idText: {fileID: 0}
-  idInputField: {fileID: 0}
-  tokenText: {fileID: 0}
-  tokenInputField: {fileID: 0}
-  tokenTooltip: {fileID: 0}
-  connectTypeContainer: {fileID: 0}
-  connectTypeDropdown: {fileID: 0}
-  loginButtonText: {fileID: 0}
-  loginButton: {fileID: 0}
-  logoutButton: {fileID: 0}
-  removePersistentTokenButton: {fileID: 0}
-  OnLogin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLogout:
-    m_PersistentCalls:
-      m_Calls: []
-  SceneInformation: {fileID: 11400000, guid: 7f27989ec7bd19d4f9f81899a6d00faf, type: 2}
-  UIFirstSelected: {fileID: 0}
-  UIFindSelectable: {fileID: 0}
 --- !u!1 &562590178
 GameObject:
   m_ObjectHideFlags: 0
@@ -5597,6 +5560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7543416626586580149, guid: c723df59401b52742ababcba371f4d73,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7764465357777434260, guid: c723df59401b52742ababcba371f4d73,
         type: 3}

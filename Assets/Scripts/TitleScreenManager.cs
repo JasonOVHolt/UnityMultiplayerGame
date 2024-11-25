@@ -10,6 +10,8 @@ using PlayEveryWare.EpicOnlineServices;
 using System.Runtime.CompilerServices;
 using UnityEditor.PackageManager;
 using Unity.Netcode;
+using Epic.OnlineServices.Auth;
+
 
 
 public class TitleScreenManager : MonoBehaviour
@@ -27,11 +29,12 @@ public class TitleScreenManager : MonoBehaviour
     int currentHat, currentMask, currentColor;
     [SerializeField] float rotSpeed;
 
-
+    [SerializeField] MyNetworkController myNetworkController;
 
     // Start is called before the first frame update
     void Awake()
     {
+        
         CheckStats();
         UnlockCustomizedItems();
         hostSettings.SetActive(false);
@@ -47,7 +50,6 @@ public class TitleScreenManager : MonoBehaviour
         currentHat = PlayerPrefs.GetInt("currentHat");
         currentMask = PlayerPrefs.GetInt("currentMask");
         currentColor = PlayerPrefs.GetInt("currentColor");
-        transportManager = EOSManager.Instance.GetOrCreateManager<EOSTransportManager>();
     }
 
     // Update is called once per frame
@@ -150,9 +152,9 @@ public class TitleScreenManager : MonoBehaviour
     {
         string sceneName = (currentMap + 1).ToString();
         SceneManager.LoadScene(sceneName);
-        StartHostOnClick();
+        myNetworkController.StartHostOnClick();
 
-        FindObjectOfType<EOSTransport>().Initialize(FindObjectOfType<NetworkManager>());
+        //FindObjectOfType<EOSTransport>().Initialize(FindObjectOfType<NetworkManager>());
     }
 
     void CheckStats()
@@ -271,75 +273,13 @@ public class TitleScreenManager : MonoBehaviour
 
     //////////////////////////////////////////////////////////
 
-    private EOSTransportManager transportManager = null;
-
-    private bool isHost = false;
-
-    private bool isClient = false;
 
 
 
-    public void StartHostOnClick()
-    {
-        if (isHost)
-        {
-            Debug.LogError("UIP2PTransportMenu (StartHostOnClick): already hosting");
-            return;
-        }
 
-        if (transportManager.StartHost())
-        {
-            isHost = true;
-            SetJoinInfo(EOSManager.Instance.GetProductUserId());
-        }
-        else
-        {
-            Debug.LogError("UIP2PTransportMenu (StartHostOnClick): failed to start host");
-        }
-    }
 
-    private void SetJoinInfo(ProductUserId serverUserId)
-    {
-        var joinData = new P2PTransportPresenceData()
-        {
-            SceneIdentifier = P2PTransportPresenceData.ValidIdentifier,
-            ServerUserId = serverUserId.ToString()
-        };
 
-        string joinString = JsonUtility.ToJson(joinData);
 
-        EOSSessionsManager.SetJoinInfo(joinString);
-    }
-
-    private void JoinGame(ProductUserId hostId)
-    {
-        if (hostId.IsValid())
-        {
-            NetworkSamplePlayer.SetNetworkHostId(hostId);
-            if (transportManager.StartClient())
-            {
-                NetworkSamplePlayer.RegisterDisconnectCallback(OnDisconnect);
-                isClient = true;
-                SetJoinInfo(hostId);
-            }
-            else
-            {
-                Debug.LogError("UIP2PTransportMenu (JoinGame): failed to start client");
-            }
-        }
-        else
-        {
-            Debug.LogError("UIP2PTransportMenu (JoinGame): invalid server user id");
-        }
-    }
-
-    private void OnDisconnect(ulong _)
-    {
-        Debug.LogWarning("UIP2PTransportMenu (OnDisconnect): server disconnected");
-        isClient = false;
-        EOSSessionsManager.SetJoinInfo(null);
-        NetworkSamplePlayer.UnregisterDisconnectCallback(OnDisconnect);
-    }
 
 
 }
