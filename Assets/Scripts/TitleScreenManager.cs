@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 using UnityEditor.PackageManager;
 using Unity.Netcode;
 using Epic.OnlineServices.Auth;
-
+using TMPro;
 
 
 public class TitleScreenManager : MonoBehaviour
@@ -28,6 +28,9 @@ public class TitleScreenManager : MonoBehaviour
 
     int currentHat, currentMask, currentColor;
     [SerializeField] float rotSpeed;
+
+    [SerializeField] TMP_InputField userID_Field;
+
 
     [SerializeField] MyNetworkController myNetworkController;
 
@@ -156,6 +159,14 @@ public class TitleScreenManager : MonoBehaviour
 
         //FindObjectOfType<EOSTransport>().Initialize(FindObjectOfType<NetworkManager>());
     }
+
+
+    public void JoinGame()
+    {
+        myNetworkController.myJoinScript(userID_Field.text);
+    }
+
+
 
     void CheckStats()
     {

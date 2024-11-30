@@ -9,19 +9,26 @@ using System.Runtime.CompilerServices;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
+
 public class MyNetworkController : MonoBehaviour
 {
     private EOSTransportManager transportManager = null;
     private bool isHost = false;
     private bool isClient = false;
     private LoginCredentialType loginType;
-
+    private FriendData friendData;
     string usernameAsString, passwordAsString;
+    [SerializeField] EOSTransport eosTransport;
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
-        if (PlayerPrefs.GetString("firstTime") == null)
+
+        if (PlayerPrefs.GetString("firstTime") == "true")
+            PlayerPrefs.SetString("firstTime", "false");
+
+
+        if (PlayerPrefs.GetString("firstTime") == "")
             PlayerPrefs.SetString("firstTime", "true");
 
         if(PlayerPrefs.GetString("firstTime") == "true")
@@ -107,8 +114,10 @@ public class MyNetworkController : MonoBehaviour
 
         if (loginType == LoginCredentialType.PersistentAuth)
         {
+            Debug.Log("Persistent Login");
             EOSManager.Instance.StartPersistentLogin((Epic.OnlineServices.Auth.LoginCallbackInfo callbackInfo) =>
             {
+                
                 // In this state, it means one needs to login in again with the previous login type, or a new one, as the
                 // tokens are invalid
                 if (callbackInfo.ResultCode != Epic.OnlineServices.Result.Success)
@@ -123,15 +132,38 @@ public class MyNetworkController : MonoBehaviour
         }
         else
         {
+            Debug.Log("Other Login");
             EOSManager.Instance.StartLoginWithLoginTypeAndToken(loginType,
                                                                         usernameAsString,
                                                                         passwordAsString,
                                                                         StartLoginWithLoginTypeAndTokenCallback);
+            
         }
     }
 
 
+    public void JoinPlayer()
+    {
+        var joinInfo = JsonUtility.FromJson<P2PTransportPresenceData>(friendData.Presence.JoinInfo);
+        if (joinInfo.IsValid())
+        {
+            var hostId = ProductUserId.FromString(joinInfo.ServerUserId);
+            if (hostId.IsValid())
+            {
+                JoinGame(hostId);
+            }
+        }
+    }
 
+
+    public void myJoinScript(string userID)
+    {
+        var hostID = ProductUserId.FromString(userID);
+        if (hostID.IsValid())
+        {
+            JoinGame(hostID);
+        }
+    }
 
 
     public void StartLoginWithLoginTypeAndTokenCallback(LoginCallbackInfo loginCallbackInfo)
@@ -211,7 +243,11 @@ public class MyNetworkController : MonoBehaviour
     }
 
 
-
+    public void LogOut()
+    {
+        PlayerPrefs.SetString("firstTime", "true");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
 
 
 
