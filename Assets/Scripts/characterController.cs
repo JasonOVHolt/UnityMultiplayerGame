@@ -212,7 +212,7 @@ public class characterController : MonoBehaviour
         }
 
 
-
+        //Crouching
         if (Input.GetKey(crouchKey))
         {
             state = movementState.crouching;
@@ -257,6 +257,23 @@ public class characterController : MonoBehaviour
     {
         wallRight = Physics.Raycast(transform.position, transform.right, out rightWallHit, wallCheckDistance, whatIsWall);
         wallLeft = Physics.Raycast(transform.position, -transform.right, out leftWallHit, wallCheckDistance, whatIsWall);
+
+        if (AboveGround() == true)
+        {
+            Debug.Log("above ground");
+        }
+        if (wallRight == true)
+        {
+            Debug.Log("wallrighting yo");
+        }
+        if (wallLeft == true)
+        {
+            Debug.Log("wall left yo");
+        }
+        if (verticalInput > 0)
+        {
+            Debug.Log(verticalInput);
+        }
     }
 
     private bool AboveGround()
@@ -266,6 +283,10 @@ public class characterController : MonoBehaviour
 
     private void StateMachine()
     {
+        Debug.Log(wallLeft + "Wall Left");
+        Debug.Log(wallRight + "Wall Right");
+        Debug.Log(verticalInput + "Vertical Input");
+        Debug.Log(AboveGround() + "Above Ground");
         upwardsRunning = Input.GetKey(upwardsRunKey);
         downwardsRunning = Input.GetKey(downwardsRunKey);
 
@@ -279,6 +300,7 @@ public class characterController : MonoBehaviour
         {
                 if (wallrunning)
                     StopWallRun();
+                
         }
 
         }
@@ -324,6 +346,7 @@ public class characterController : MonoBehaviour
     private void StopWallRun()
     {
         wallrunning = false;
+        
     }
 
     private void FixedUpdate()

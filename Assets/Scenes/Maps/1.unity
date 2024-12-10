@@ -4258,30 +4258,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db21aad6adb87104cb044aa340ad3f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1
-  sprintSpeed: 2
-  wallRunSpeed: 8
+  walkSpeed: 2
+  sprintSpeed: 4
+  wallRunSpeed: 2
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
   grounded: 0
   groundDrag: 0.5
-  jumpForce: 5
+  jumpForce: 70
   jumpCooldown: 0.5
-  airMultiplier: 0.5
+  airMultiplier: 0.75
   readyToJump: 1
   crouchSpeed: 0.1
   crouchYScale: 0
   maxSlopeAngle: 40
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 0
-  wallRunForce: 5
+    m_Bits: 1
+  wallRunForce: 8
   maxWallRunTime: 10
-  wallClimbSpeed: 2
+  wallClimbSpeed: 5
   wallCheckDistance: 1
-  minJumpHeight: 0
+  minJumpHeight: 2
   wallrunning: 0
   jumpKey: 32
   sprintKey: 304
@@ -4299,7 +4299,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141952864}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
