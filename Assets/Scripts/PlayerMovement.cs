@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
     private bool onWall;
     private bool cancelling;
 
+
     public static PlayerMovement Instance { get; private set; }
 
     void Awake()
@@ -153,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
             StopCrouch();
     }
 
+ 
     private void StartCrouch()
     {
         transform.localScale = crouchScale;
