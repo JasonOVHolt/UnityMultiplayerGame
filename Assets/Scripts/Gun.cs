@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Gun : MonoBehaviour
 {
@@ -9,26 +10,26 @@ public class Gun : MonoBehaviour
     private bool AddBulletSpread = true;
     [SerializeField]
     private Vector3 BulletSpreadVariance = new Vector3(0.1f, 0.1f, 0.1f);
+    //[SerializeField]
+    //private ParticleSystem ShootingSystem;
     [SerializeField]
-   // private ParticleSystem ShootingSystem;
-   // [SerializeField]
     private Transform BulletSpawnPoint;
-    [SerializeField]
-  //  private ParticleSystem ImpactParticleSystem;
-   // [SerializeField]
+    //[SerializeField]
+    //private ParticleSystem ImpactParticleSystem;
+    //[SerializeField]
     //private TrailRenderer BulletTrail;
-   // [SerializeField]
+    [SerializeField]
     private float ShootDelay = 0.5f;
     [SerializeField]
     private LayerMask Mask;
-
-    private Animator Animator;
+    public GameObject minion;
+    //private Animator Animator;
 
     private float LastShootTime;
 
     private void Awake()
     {
-        // Animator = GetComponent<Animator>();
+        //Animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -42,24 +43,28 @@ public class Gun : MonoBehaviour
     if (Input.GetMouseButtonDown(0))
         {
             Shoot();
-            Debug.Log("it works");
+            
         }
     }
     public void Shoot()
     {
         if (LastShootTime + ShootDelay < Time.time)
         {
-            //Animator.SetBool("IsShooting", true);
+           // Animator.SetBool("IsShooting", true);
             //ShootingSystem.Play();
             Vector3 direction = GetDirection();
 
             if (Physics.Raycast(BulletSpawnPoint.position, direction, out RaycastHit hit, float.MaxValue, Mask))
             {
-               // TrailRenderer trail = Instantiate(BulletTrail, BulletSpawnPoint.position, Quaternion.identity);
+                //TrailRenderer trail = Instantiate(BulletTrail, BulletSpawnPoint.position, Quaternion.identity);
 
-               // StartCoroutine(SpawnTrail(trail, hit));
+                //StartCoroutine(SpawnTrail(trail, hit));
 
                 LastShootTime = Time.time;
+
+                Object.Destroy(minion);
+
+                Debug.Log("it works");
             }
         }
     }

@@ -2290,7 +2290,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2740007072941684939, guid: c723df59401b52742ababcba371f4d73,
         type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 1311585114}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c723df59401b52742ababcba371f4d73, type: 3}
@@ -2315,32 +2315,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7c42236c4e8b21e4cba7423c87a6a57b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 0.40000004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c42236c4e8b21e4cba7423c87a6a57b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c42236c4e8b21e4cba7423c87a6a57b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c42236c4e8b21e4cba7423c87a6a57b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c42236c4e8b21e4cba7423c87a6a57b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c42236c4e8b21e4cba7423c87a6a57b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c42236c4e8b21e4cba7423c87a6a57b,
         type: 3}
@@ -4744,16 +4744,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1311585113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c33d376a5d14f84996e4b3b2fea0dc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8608e4238881d154485b87f984b63a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddBulletSpread: 1
-  BulletSpreadVariance: {x: 0.1, y: 0.1, z: 0.1}
-  BulletSpawnPoint: {fileID: 1311585114}
-  ShootDelay: 0.5
-  Mask:
+  hitscanRange: 100
+  hitscanLayers:
     serializedVersion: 2
     m_Bits: 1024
+  useHitscan: 1
 --- !u!1001 &1353733699
 PrefabInstance:
   m_ObjectHideFlags: 0
