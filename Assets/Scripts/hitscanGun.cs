@@ -7,6 +7,8 @@ public class hitscanGun : MonoBehaviour
     [SerializeField] private float hitscanRange = 100f;
     [SerializeField] private LayerMask hitscanLayers;
     [SerializeField] private bool useHitscan = true;
+    [SerializeField] GameObject camPos;
+    private Vector3 camOffset = new Vector3(0, 0.7f, 0);
     // Start is called before the first frame update
 
     private void Update()
@@ -17,18 +19,18 @@ public class hitscanGun : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * hitscanRange);
-    }
 
     private void fireHitscan()
     {
-        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, hitscanLayers))
+        if(Physics.Raycast(camPos.transform.position+camOffset, camPos.transform.forward, out RaycastHit hit, hitscanRange))
         {
-            Debug.Log(hit.collider.gameObject.name);
-            Destroy(hit.transform.gameObject);
+            
+            if (hit.collider.gameObject.layer == Mathf.Log(hitscanLayers.value, 2))
+            {
+                Debug.Log(hit.collider.name);
+                Destroy(hit.transform.gameObject);
+            }
+            
         }
     }
     private float desiredX;

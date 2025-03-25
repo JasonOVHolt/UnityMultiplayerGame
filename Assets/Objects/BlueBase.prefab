@@ -9564,7 +9564,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3624858991761671404}
@@ -9609,6 +9609,7 @@ MonoBehaviour:
   attackerH: 0
   harvestorHS: 0
   harvestorMS: 0
+  playerController: {fileID: 0}
 --- !u!114 &5749526986426189912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9621,6 +9622,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b6ee1c1a6017f468ca21a774f0f76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minionTab: {fileID: 0}
+  baseTab: {fileID: 0}
+  playerTab: {fileID: 0}
   baseManager: {fileID: 7810509387587034652}
   minionAttackTierText: {fileID: 0}
   minionAttackSpawnRateText: {fileID: 0}
@@ -9633,18 +9637,63 @@ MonoBehaviour:
   minionAttackStoneUpgradeText: {fileID: 0}
   minionHarvestWoodUpgradeText: {fileID: 0}
   minionHarvestStoneUpgradeText: {fileID: 0}
+  playerHarvestWoodUpgradeText: {fileID: 0}
+  playerHarvestStoneUpgradeText: {fileID: 0}
+  playerWeaponWoodUpgradeText: {fileID: 0}
+  playerWeaponStoneUpgradeText: {fileID: 0}
+  playerArmorWoodUpgradeText: {fileID: 0}
+  playerArmorStoneUpgradeText: {fileID: 0}
+  baseWoodUpgradeText: {fileID: 0}
+  baseStoneUpgradeText: {fileID: 0}
   averageMinionTierText: {fileID: 0}
   averagePlayerTierText: {fileID: 0}
   playerHarvestSpeedText: {fileID: 0}
   playerHarvestAmountText: {fileID: 0}
-  playerWeaponText: {fileID: 0}
-  playerArmorText: {fileID: 0}
+  playerWeaponTierText: {fileID: 0}
+  playerArmorTierText: {fileID: 0}
+  playerArmorMaxText: {fileID: 0}
   upgradeAttackMinion1: {x: 0, y: 0}
+  upgradeAttackMinion2: {x: 0, y: 0}
+  upgradeAttackMinion3: {x: 0, y: 0}
+  upgradeAttackMinion4: {x: 0, y: 0}
+  upgradeAttackMinion5: {x: 0, y: 0}
+  upgradeAttackMinion6: {x: 0, y: 0}
+  upgradeAttackMinion7: {x: 0, y: 0}
+  upgradeAttackMinion8: {x: 0, y: 0}
+  upgradeAttackMinion9: {x: 0, y: 0}
+  upgradeAttackMinion10: {x: 0, y: 0}
   upgradeHarvestMinion1: {x: 0, y: 0}
+  upgradeHarvestMinion2: {x: 0, y: 0}
+  upgradeHarvestMinion3: {x: 0, y: 0}
+  upgradeHarvestMinion4: {x: 0, y: 0}
+  upgradeHarvestMinion5: {x: 0, y: 0}
+  upgradeHarvestMinion6: {x: 0, y: 0}
+  upgradeHarvestMinion7: {x: 0, y: 0}
+  upgradeHarvestMinion8: {x: 0, y: 0}
+  upgradeHarvestMinion9: {x: 0, y: 0}
+  upgradeHarvestMinion10: {x: 0, y: 0}
   upgradeBase1: {x: 0, y: 0}
+  upgradeBase2: {x: 0, y: 0}
   upgradeHarvestTool1: {x: 0, y: 0}
+  upgradeHarvestTool2: {x: 0, y: 0}
+  upgradeHarvestTool3: {x: 0, y: 0}
+  upgradeHarvestTool4: {x: 0, y: 0}
+  upgradeHarvestTool5: {x: 0, y: 0}
   upgradeWeapon1: {x: 0, y: 0}
+  upgradeWeapon2: {x: 0, y: 0}
+  upgradeWeapon3: {x: 0, y: 0}
+  upgradeWeapon4: {x: 0, y: 0}
+  upgradeWeapon5: {x: 0, y: 0}
   upgradeArmor1: {x: 0, y: 0}
+  upgradeArmor2: {x: 0, y: 0}
+  upgradeArmor3: {x: 0, y: 0}
+  upgradeArmor4: {x: 0, y: 0}
+  upgradeArmor5: {x: 0, y: 0}
+  upgradeArmor6: {x: 0, y: 0}
+  upgradeArmor7: {x: 0, y: 0}
+  upgradeArmor8: {x: 0, y: 0}
+  upgradeArmor9: {x: 0, y: 0}
+  upgradeArmor10: {x: 0, y: 0}
 --- !u!1 &5148391666948792983
 GameObject:
   m_ObjectHideFlags: 0

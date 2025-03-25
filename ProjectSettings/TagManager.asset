@@ -11,7 +11,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - DO NOT RENDER
+  - 
   - Water
   - UI
   - 
@@ -20,8 +20,8 @@ TagManager:
   - OtherPlayer
   - Ground
   - 
-  - 
-  - 
+  - CURRENT DO NOT RENDER
+  - OTHER DO NOT RENDER
   - 
   - 
   - 
